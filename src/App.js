@@ -26,6 +26,35 @@ function ShowList({list}){
   );
 }
 
+function Going(props){
+  return (
+    <div>
+      <h3>As the weather is {props.weather} so I am going</h3>
+    </div>
+  )
+}
+
+function NotGoing(props){
+
+  return (
+    <div>
+      <h1>As the weather is {props.weather}. I am not going!</h1>
+    </div>
+  )
+}
+
+function ConditionalTravel({condition}){
+
+  return (
+    <div>
+      {condition === 'Clear' ? <Going weather={condition}/> :
+        condition === 'Bad' ? <NotGoing weather={condition}/> :
+        <h3>I will try the next time</h3>
+      }
+    </div>
+  )
+}
+
 const list = ['To go to UET', 'Apply for Degree', 'Collect DMC', 'Meet Haseeb', 'Eat Something'];
 const ListObj = list.map((item, i) => ({id:i, name: item}));
 console.log(ListObj);
@@ -34,7 +63,7 @@ function App() {
     <div className="App">
       <Hello message="Hurray!" libray="Next"/>
       <ShowList list={ListObj}/>
-      <h4>Footer</h4>
+      <ConditionalTravel condition="An" />
     </div>
   );
 }
